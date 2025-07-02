@@ -981,7 +981,7 @@ func (s *session) mysqlAnalyzeGhostOutput(out string, p *util.OscProcessInfo) (c
 
 	if pct >= 100 {
 		pct = 100
-		complete = true
+	//	complete = true
 	}
 
 	p.Percent = pct
