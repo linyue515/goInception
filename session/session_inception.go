@@ -4315,7 +4315,7 @@ func (s *session) checkModifyColumn(t *TableInfo, c *ast.AlterTableSpec) {
 			case mysql.TypeDecimal, mysql.TypeNewDecimal,
 				mysql.TypeVarchar,
 				mysql.TypeVarString:
-				str := string([]byte(foundField.Type)[:7])
+				str := GetDataTypeBase(foundField.Type)
 				// 类型不一致
 				if !strings.Contains(fieldType, str) {
 					s.appendErrorNo(ER_CHANGE_COLUMN_TYPE,
@@ -4327,7 +4327,7 @@ func (s *session) checkModifyColumn(t *TableInfo, c *ast.AlterTableSpec) {
 						foundField.Type, fieldType)
 				}
 			case mysql.TypeString:
-				str := string([]byte(foundField.Type)[:4])
+				str := GetDataTypeBase(foundField.Type)
 				// 类型不一致
 				if !strings.Contains(fieldType, str) {
 					s.appendErrorNo(ER_CHANGE_COLUMN_TYPE,
